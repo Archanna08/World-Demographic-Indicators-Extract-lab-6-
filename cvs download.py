@@ -1,5 +1,4 @@
 
-import numpy as np
 import pandas as pd
 import seaborn as sns
 
@@ -44,10 +43,11 @@ print(data["High Income Economy"].value_counts())
 print(pd.crosstab(data["High Income Economy"],data["Region"]))
 
 #Part 3 question 9
-filtered_data = data[data["Life expectancy,female"]>80]
+filtered_data = data[data["Life expectancy, female"]>80]
+count = filtered_data["Country Name"]
+for i in count:
+    print(count)
 
-count = filtered_data["Country"]
-print(count)
 
 
 
