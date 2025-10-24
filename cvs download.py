@@ -79,11 +79,11 @@ sns.relplot( data= data, x= 'International tourism', y='Life expectancy, male')
 
 #all the plots between males and females have similar trends
 
-#Is there any relationship between the Population and life expantancy?
+#Is there any relationship between the Population and Regions?
 
 sns.relplot( data=data, x='Population', y='Life expectancy, female', label='Female')
 sns.relplot( data=data, x='Population', y='Life expectancy, male', label='Male')
-sns.FacetGrid(data= data, col= 'Life expectancy, female') 
+sns.FacetGrid(data= data, col= 'Region') 
 
 #Any relationship between Tertiary education, female and life expectancy?
 
@@ -107,9 +107,13 @@ for country in filtered_data["Country Name"]:
 #??
 
 #d)
-while "High income emissions">0.03:
 
-    print
+high_income = data[data["High Income Economy"]> 0]
+count = (high_income["Greenhouse gas emissions"] >0.03).count()
+if count == 66: # data obtained from question 8 part 3
+        print('Yes all countries with high income economy have high emissions')
+else:
+        print('No, not all countries have such high emissions')
     
 
 
