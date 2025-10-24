@@ -98,8 +98,15 @@ sns.FacetGrid(data= data, col= 'gender')
 data["emissions per capita"] = data["Greenhouse gas emissions "]/data["Population"]
 sns.relplot( data=data, x='Internet use', y='emissions per capita')
 
+#b)
+filtered_data = data[data["Greenhouse gas emissions"]>0.03]
+for country in filtered_data["Country Name"]:
+    print(country) 
+
+#c) 
 
 
+    
 
  
 
