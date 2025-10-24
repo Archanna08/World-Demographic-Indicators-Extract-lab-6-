@@ -44,11 +44,59 @@ print(pd.crosstab(data["High Income Economy"],data["Region"]))
 
 #Part 3 question 9
 filtered_data = data[data["Life expectancy, female"]>80]
-count = filtered_data["Country Name"]
-for i in count:
-    print(count)
+count = filtered_data["Country Name"].count()
+print('There are',count, 'countries')
+for country in filtered_data["Country Name"]:
+    print(country)
+    
+#Part 4 question 1
+life_expectancy= 'Life expectancy, female'
+sns.relplot(data= data , x= 'GNI per capita', y='Life expectancy, female')
+# scatter plot showing relation between GNi per capita and life expectnacy for female
+#if male:
+sns.relplot(data= data , x= 'GNI per capita', y='Life expectancy, male')
+        
+#Part 4 question 2
+sns.relplot(data= data , x= 'GNI per capita', y='Life expectancy, female', hue= 'Region')
 
+#Part 4 question 3 ?? look back !!
 
+#Part 4 question 4
+#Look back
+
+#Part 4 question 5
+#exploring relationships between female life exepantcy and numerical features
+sns.relplot(data= data, x= 'Internet use', y='Life expectancy, female')
+#Comparison
+sns.relplot(data= data, x= 'Internet use', y='Life expectancy, male')
+
+sns.relplot( data= data, x='Physicians',y='Life expectancy, female' )
+sns.relplot( data= data, x='Physicians',y='Life expectancy, male' )  
+      
+sns.relplot( data= data, x= 'International tourism', y='Life expectancy, female')
+sns.relplot( data= data, x= 'International tourism', y='Life expectancy, male')
+
+#all the plots between males and females have similar trends
+
+#Is there any relationship between the Population and life expantancy?
+
+gender = data['Life expectancy, male','Life expectancy, female']
+sns.relplot( data=data, x='Population', y='Life expectancy, female', label='Female')
+sns.relplot( data=data, x='Population', y='Life expectancy, male', label='Male')
+sns.FacetGrid(data= data, col= 'gender')
+
+#Any relationship between Tertiary education, female and life expectancy?
+
+#Regions and life expectancy relationship
+
+#Subregion and life expectancy relationship
+
+#Women in national parliament and life expectancy relationship
+
+#Part 4 question 6
+#a)
+data["emissions per capita"] = data["Greenhouse gas emissions "]/data["Population"]
+sns.relplot( data=data, x='Internet use', y='emissions per capita')
 
 
 
