@@ -59,10 +59,11 @@ sns.relplot(data= data , x= 'GNI per capita', y='Life expectancy, male')
 #Part 4 question 2
 sns.relplot(data= data , x= 'GNI per capita', y='Life expectancy, female', hue= 'Region')
 
-#Part 4 question 3 ?? look back !!
+#Part 4 question 3 
+sns.relplot( data= data, kind= "line", x= "GNI per capita", y= "Life expectancy, female", errorbar= "sd" )
 
 #Part 4 question 4
-#Look back
+sns.lmplot( data= data, kind= "line", x= "GNI per capita", y= "Life expectancy, female", errorbar= "sd" )
 
 #Part 4 question 5
 #exploring relationships between female life exepantcy and numerical features
