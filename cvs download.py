@@ -60,10 +60,10 @@ sns.relplot(data= data , x= 'GNI per capita', y='Life expectancy, male')
 sns.relplot(data= data , x= 'GNI per capita', y='Life expectancy, female', hue= 'Region')
 
 #Part 4 question 3 
-sns.relplot( data= data, kind= "line", x= "GNI per capita", y= "Life expectancy, female", errorbar= "sd" )
+sns.relplot( data= data,kind= "line", x= "GNI per capita", y= "Life expectancy, female", hue="Region", errorbar= "sd" )
 
 #Part 4 question 4
-sns.lmplot( data= data, kind= "line", x= "GNI per capita", y= "Life expectancy, female", errorbar= "sd" )
+sns.lmplot( data= data, x= "GNI per capita", y= "Life expectancy, female" , hue="Region")
 
 #Part 4 question 5
 #exploring relationships between female life exepantcy and numerical features
@@ -81,10 +81,9 @@ sns.relplot( data= data, x= 'International tourism', y='Life expectancy, male')
 
 #Is there any relationship between the Population and life expantancy?
 
-gender = data['Life expectancy, male','Life expectancy, female']
 sns.relplot( data=data, x='Population', y='Life expectancy, female', label='Female')
 sns.relplot( data=data, x='Population', y='Life expectancy, male', label='Male')
-sns.FacetGrid(data= data, col= 'gender')
+sns.FacetGrid(data= data, col= 'Life expectancy, female') 
 
 #Any relationship between Tertiary education, female and life expectancy?
 
@@ -105,6 +104,13 @@ for country in filtered_data["Country Name"]:
     print(country) 
 
 #c) 
+#??
+
+#d)
+while "High income emissions">0.03:
+
+    print
+    
 
 
     
