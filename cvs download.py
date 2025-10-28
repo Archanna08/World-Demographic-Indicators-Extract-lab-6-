@@ -19,7 +19,7 @@ print(data.nunique())
 #Part 3 question 5
 print(data.describe())
 #it gives the number of rows and columns
-#count, mean, std,min,max
+#count, mean, std,min,max, quartile (Q3 -Q1)
 
 #Part 3 question 6
 data["GNI per capita"] = data["GNI"]/data["Population"]
@@ -61,6 +61,7 @@ sns.relplot(data= data , x= 'GNI per capita', y='Life expectancy, female', hue= 
 
 #Part 4 question 3 
 sns.relplot( data= data,kind= "line", x= "GNI per capita", y= "Life expectancy, female", hue="Region", errorbar= "sd" )
+#answer: why cant you see the area representing a std in the plot? Because many regions have the same x value
 
 #Part 4 question 4
 sns.lmplot( data= data, x= "GNI per capita", y= "Life expectancy, female" , hue="Region")
@@ -77,21 +78,21 @@ sns.relplot( data= data, x='Physicians',y='Life expectancy, male' )
 sns.relplot( data= data, x= 'International tourism', y='Life expectancy, female')
 sns.relplot( data= data, x= 'International tourism', y='Life expectancy, male')
 
-#all the plots between males and females have similar trends
+#all the plots between males and females' life expanctancy have similar trends
 
 #Is there any relationship between the Population and Regions?
 
-sns.relplot( data=data, x='Population', y='Life expectancy, female', label='Female')
-sns.relplot( data=data, x='Population', y='Life expectancy, male', label='Male')
-sns.FacetGrid(data= data, col= 'Region') 
+g= sns.FacetGrid(data= data, col= 'Region')
+g.map(sns.relplot, x='GNI per capita',y='Population')
 
-#Any relationship between Tertiary education, female and life expectancy?
 
-#Regions and life expectancy relationship
+#Any relationship between Tertiary education, female and Regions?
 
-#Subregion and life expectancy relationship
+#Internet use and REgions relationship: Does it vary depending on the Regions?
 
-#Women in national parliament and life expectancy relationship
+#Subregion and Regions relationship
+
+#Women in national parliament and Regions relationship
 
 #Part 4 question 6
 #a)
