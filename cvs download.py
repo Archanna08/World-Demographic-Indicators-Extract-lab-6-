@@ -51,53 +51,55 @@ for country in filtered_data["Country Name"]:
     
 #Part 4 question 1
 life_expectancy= 'Life expectancy, female'
-sns.relplot(data= data , x= 'GNI per capita', y='Life expectancy, female')
+sns.relplot(data= data , x= 'GNI per capita', y='Life expectancy, female').set(title="Association between GNI per capita and life expectancy in female")
+
 # scatter plot showing relation between GNi per capita and life expectnacy for female
 #if male:
-sns.relplot(data= data , x= 'GNI per capita', y='Life expectancy, male')
+sns.relplot(data= data , x= 'GNI per capita', y='Life expectancy, male').set(title="Association between GNI per capita and life expectancy in male")
         
 #Part 4 question 2
-sns.relplot(data= data , x= 'GNI per capita', y='Life expectancy, female', hue= 'Region')
+sns.relplot(data= data , x= 'GNI per capita', y='Life expectancy, female', hue= 'Region').set(title="Association between GNI per capita and life expectancy in female in each Regions")
 
 #Part 4 question 3 
-sns.relplot( data= data,kind= "line", x= "GNI per capita", y= "Life expectancy, female", hue="Region", errorbar= "sd" )
+sns.relplot( data= data,kind= "line", x= "GNI per capita", y= "Life expectancy, female", hue="Region", errorbar= "sd" ).set(title="Association between GNI per capita and life expectancy in female in each Regions")
 #answer: why cant you see the area representing a std in the plot? Because many regions have the same x value
 
 #Part 4 question 4
-sns.lmplot( data= data, x= "GNI per capita", y= "Life expectancy, female" , hue="Region")
+sns.lmplot( data= data, x= "GNI per capita", y= "Life expectancy, female" , hue="Region").set(title="Association between GNI per capita and life expectancy in female in each Regions")
 
 #Part 4 question 5
 #exploring relationships between female life exepantcy and numerical features
-sns.relplot(data= data, x= 'Internet use', y='Life expectancy, female')
+sns.relplot(data= data, x= 'Internet use', y='Life expectancy, female').set(title="Relationship between life expectancy in female and the Internet Use")
 #Comparison
-sns.relplot(data= data, x= 'Internet use', y='Life expectancy, male')
+sns.relplot(data= data, x= 'Internet use', y='Life expectancy, male').set(title="Relationship between life expectancy in male and the Internet Use")
 
-sns.relplot( data= data, x='Physicians',y='Life expectancy, female' )
-sns.relplot( data= data, x='Physicians',y='Life expectancy, male' )  
+sns.relplot( data= data, x='Physicians', y='Life expectancy, female' ).set(title="Relationship between life expectancy in female and the average number of Physicians")
+sns.relplot( data= data, x='Physicians', y='Life expectancy, male' )  .set(title="Relationship between life expectancy in male and the average number of Physicians")
       
-sns.relplot( data= data, x= 'International tourism', y='Life expectancy, female')
-sns.relplot( data= data, x= 'International tourism', y='Life expectancy, male')
+sns.relplot( data= data, x= 'International tourism', y='Life expectancy, female').set(title="Relationship between life expectancy in female and International tourism")
+sns.relplot( data= data, x= 'International tourism', y='Life expectancy, male').set(title="Relationship between life expectancy in female and International tourism")
 
 #all the plots between males and females' life expanctancy have similar trends
 
-#Is there any relationship between the Population and Regions?
+#1) Is there any relationship between the GNI per capita and life expectancy, female in each Regions?
+sns.relplot(data= data, x="GNI per capita", y='Life expectancy, female' , col= 'Region').set(title="Relationship between GNI per capita and life expectancy in female in each Regions")
 
-g= sns.FacetGrid(data= data, col= 'Region')
-g.map(sns.relplot, x='GNI per capita',y='Population')
+#Any relationship between Tertiary education, female and GNI per capita in each Regions?
+sns.relplot(data= data, x="Tertiary education, female", y='GNI per capita' , col= 'Region').set(title="Relationship between tertiary education of female and GNI per capita in each Regions")
 
+#Internet use and GNI per capita in each REgions relationship?
+sns.relplot(data= data, x="Internet use", y='GNI per capita' , col= 'Region').set(title="Relationship between Internet use and the GNI per capita in each Regions")
 
-#Any relationship between Tertiary education, female and Regions?
+#Poluation and International toursism in each Regions relationship:
+sns.relplot(data= data, x="Population", y='International tourism' , col= 'Region').set(title="Relationship between Population and International tourism in each Regions")
 
-#Internet use and REgions relationship: Does it vary depending on the Regions?
-
-#Subregion and Regions relationship
-
-#Women in national parliament and Regions relationship
+#Woman in national parliament and tertiary education, female in each Regions relationship:
+sns.relplot(data= data, x="Women in national parliament", y='Tertiary education, female' , col= 'Region').set(title="Relationship between Woman in national parliament and Tertiary education of female in each Regions")
 
 #Part 4 question 6
 #a)
-data["emissions per capita"] = data["Greenhouse gas emissions "]/data["Population"]
-sns.relplot( data=data, x='Internet use', y='emissions per capita')
+data["emissions per capita"] = data["Greenhouse gas emissions"]/data["Population"]
+sns.relplot( data=data, x='Internet use', y='emissions per capita').set(title="Association between Internet use and emissions per capita")
 
 #b)
 filtered_data = data[data["Greenhouse gas emissions"]>0.03]
@@ -105,10 +107,11 @@ for country in filtered_data["Country Name"]:
     print(country) 
 
 #c) 
-#??
+filtered = data[data["Greenhouse gas emissions"]>0.03]
+for i in filtered["Internet use"]:
+    print(sns.relplot(data= data, x="filtered", y='Internet use' , col= 'Region'))
 
 #d)
-
 high_income = data[data["High Income Economy"]> 0]
 count = (high_income["Greenhouse gas emissions"] >0.03).count()
 if count == 66: # data obtained from question 8 part 3
