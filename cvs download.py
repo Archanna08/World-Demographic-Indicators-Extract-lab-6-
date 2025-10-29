@@ -82,19 +82,24 @@ sns.relplot( data= data, x= 'International tourism', y='Life expectancy, male').
 #all the plots between males and females' life expanctancy have similar trends
 
 #1) Is there any relationship between the GNI per capita and life expectancy, female in each Regions?
-sns.relplot(data= data, x="GNI per capita", y='Life expectancy, female' , col= 'Region').set(title="Relationship between GNI per capita and life expectancy in female in each Regions")
+g= sns.relplot(data= data, x="GNI per capita", y='Life expectancy, female' , col= 'Region')
+g.fig.suptitle("Relationship between GNI per capita and life expectancy in female in each Regions", y=1.1)
 
 #Any relationship between Tertiary education, female and GNI per capita in each Regions?
-sns.relplot(data= data, x="Tertiary education, female", y='GNI per capita' , col= 'Region').set(title="Relationship between tertiary education of female and GNI per capita in each Regions")
+g= sns.relplot(data= data, x="Tertiary education, female", y='GNI per capita' , col= 'Region')
+g.fig.suptitle("Relationship between tertiary education of female and GNI per capita in each Regions", y=1.1)
 
 #Internet use and GNI per capita in each REgions relationship?
-sns.relplot(data= data, x="Internet use", y='GNI per capita' , col= 'Region').set(title="Relationship between Internet use and the GNI per capita in each Regions")
+g = sns.relplot(data= data, x="Internet use", y='GNI per capita' , col= 'Region')
+g.fig.suptitle("Relationship between Internet use and the GNI per capita in each Regions", y=1.1)
 
 #Poluation and International toursism in each Regions relationship:
-sns.relplot(data= data, x="Population", y='International tourism' , col= 'Region').set(title="Relationship between Population and International tourism in each Regions")
+g= sns.relplot(data= data, x="Population", y='International tourism' , col= 'Region')
+g.fig.suptitle("Relationship between Population and International tourism in each Regions", y=1.1)
 
 #Woman in national parliament and tertiary education, female in each Regions relationship:
-sns.relplot(data= data, x="Women in national parliament", y='Tertiary education, female' , col= 'Region').set(title="Relationship between Woman in national parliament and Tertiary education of female in each Regions")
+g = sns.relplot(data= data, x="Women in national parliament", y='Tertiary education, female' , col= 'Region')
+g.fig.suptitle("Relationship between Woman in national parliament and Tertiary education of female in each Regions", y=1.1)
 
 #Part 4 question 6
 #a)
@@ -107,7 +112,7 @@ for country in filtered_data["Country Name"]:
     print(country) 
 
 #c) 
-sns.relplot(data= data, x="Greenhouse gas emissions", y='Internet use' , col= 'Region')
+sns.relplot(data= data, x="Internet use", y='Greenhouse gas emissions' , col= 'Region')
 
 #d)
 high_income = data[data["High Income Economy"]> 0]
