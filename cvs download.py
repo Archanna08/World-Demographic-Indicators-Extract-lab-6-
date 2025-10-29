@@ -77,7 +77,7 @@ sns.relplot( data= data, x='Physicians', y='Life expectancy, female' ).set(title
 sns.relplot( data= data, x='Physicians', y='Life expectancy, male' )  .set(title="Relationship between life expectancy in male and the average number of Physicians")
       
 sns.relplot( data= data, x= 'International tourism', y='Life expectancy, female').set(title="Relationship between life expectancy in female and International tourism")
-sns.relplot( data= data, x= 'International tourism', y='Life expectancy, male').set(title="Relationship between life expectancy in female and International tourism")
+sns.relplot( data= data, x= 'International tourism', y='Life expectancy, male').set(title="Relationship between life expectancy in male and International tourism")
 
 #all the plots between males and females' life expanctancy have similar trends
 
@@ -107,9 +107,7 @@ for country in filtered_data["Country Name"]:
     print(country) 
 
 #c) 
-filtered = data[data["Greenhouse gas emissions"]>0.03]
-for i in filtered["Internet use"]:
-    print(sns.relplot(data= data, x="filtered", y='Internet use' , col= 'Region'))
+sns.relplot(data= data, x="Greenhouse gas emissions", y='Internet use' , col= 'Region')
 
 #d)
 high_income = data[data["High Income Economy"]> 0]
