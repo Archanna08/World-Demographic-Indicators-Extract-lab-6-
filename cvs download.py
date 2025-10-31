@@ -117,7 +117,7 @@ g.fig.suptitle('Variation between Internet use and Regions with high emissions',
 
 #d)
 high_income = data[data["High Income Economy"]> 0]
-count = (high_income["Greenhouse gas emissions"] >0.03).count()
+count = (high_income["Greenhouse gas emissions"] >0.03).sum() #sum of all high emissions countries
 if count == 66: # data obtained from question 8 part 3
         print('Yes all countries with high income economy have high emissions')
 else:
