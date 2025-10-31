@@ -107,12 +107,13 @@ data["emissions per capita"] = data["Greenhouse gas emissions"]/data["Population
 sns.relplot( data=data, x='Internet use', y='emissions per capita').set(title="Association between Internet use and emissions per capita")
 
 #b)
-filtered_data = data[data["Greenhouse gas emissions"]>0.03]
+filtered_data = data[data["emissions per capita"]>0.03]
 for country in filtered_data["Country Name"]:
     print(country) 
 
 #c) 
-sns.relplot(data= data, x="Internet use", y='Greenhouse gas emissions' , col= 'Region')
+g =sns.relplot(data= data, x="Internet use", y='emissions per capita' , hue= 'High emissions countries', col='Region')
+g.fig.suptitle('Variation between Internet use and Regions with high emissions', y=1.1)
 
 #d)
 high_income = data[data["High Income Economy"]> 0]
