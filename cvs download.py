@@ -1,4 +1,11 @@
 
+#World Demographic Indicator Extract
+#Author: Archanna Nagesan
+#Due date: 31/10/2025
+#Progamming in science- 420-SN1-RE
+
+#This Python script uses seaborn and its functions to explore and plot graphs on the dataset World Demographic Indicator Extract.
+
 import pandas as pd
 import seaborn as sns
 
