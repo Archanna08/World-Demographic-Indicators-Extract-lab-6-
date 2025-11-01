@@ -119,6 +119,7 @@ for country in filtered_data["Country Name"]:
     print(country) 
 
 #c) 
+data['High emissions countries']= data['emissions per capita']>0.03 #creates a new column
 g =sns.relplot(data= data, x="Internet use", y='emissions per capita' , hue= 'High emissions countries', col='Region')
 g.fig.suptitle('Variation between Internet use and Regions with high emissions', y=1.1)
 
